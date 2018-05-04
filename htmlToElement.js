@@ -130,13 +130,13 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
             : null;
           const customStyle = inheritedStyle(parent);
 
-          if (parent.name === 'ol') {
+          if (parent && parent.name === 'ol') {
             listItemPrefix = (
               <TextComponent style={[defaultStyle, customStyle]}>
                 {`${orderedListCounter++}. `}
               </TextComponent>
             );
-          } else if (parent.name === 'ul') {
+          } else if (parent && parent.name === 'ul') {
             listItemPrefix = (
               <TextComponent style={[defaultStyle, customStyle]}>
                 {opts.bullet}
