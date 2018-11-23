@@ -9,10 +9,10 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ## Table of contents
 
-* [Install](#install)
-* [Usage](#usage)
-* [Example](#example)
-* [Changelog](#changelog)
+- [Install](#install)
+- [Usage](#usage)
+- [Example](#example)
+- [Changelog](#changelog)
 
 ### Install
 
@@ -24,28 +24,29 @@ npm install react-native-htmlview --save
 
 props:
 
-* `value`: a string of HTML content to render
-* `onLinkPress`: a function which will be called with a url when a link is pressed.
+- `value`: a string of HTML content to render
+- `onLinkPress`: a function which will be called with a url when a link is pressed.
   Passing this prop will override how links are handled (defaults to calling `Linking.openURL(url)`)
-* `onLinkLongPress`: a function which will be called with a url when a link is long pressed.
+- `onLinkLongPress`: a function which will be called with a url when a link is long pressed.
   The default is `null`.
-* `stylesheet`: a stylesheet object keyed by tag name, which will override the
+- `stylesheet`: a stylesheet object keyed by tag name, which will override the
   styles applied to those respective tags.
-* `renderNode`: a custom function to render HTML nodes however you see fit. If
+- `renderNode`: a custom function to render HTML nodes however you see fit. If
   the function returns `undefined` (not `null`), the default renderer will be
   used for that node. The function takes the following arguments:
-  * `node` the html node as parsed by [htmlparser2](https://github.com/fb55/htmlparser2)
-  * `index` position of the node in parent node's children
-  * `siblings` parent node's children (including current node)
-  * `parent` parent node
-  * `defaultRenderer` the default rendering implementation, so you can use the normal rendering logic for some subtree. `defaultRenderer` takes the following arguments:
-    * `node` the node to render with the default rendering logic
-    * `parent` the parent of node of `node`
+  - `node` the html node as parsed by [htmlparser2](https://github.com/fb55/htmlparser2)
+  - `index` position of the node in parent node's children
+  - `siblings` parent node's children (including current node)
+  - `parent` parent node
+  - `defaultRenderer` the default rendering implementation, so you can use the normal rendering logic for some subtree. `defaultRenderer` takes the following arguments:
+    - `node` the node to render with the default rendering logic
+    - `parent` the parent of node of `node`
+
 * `bullet`: text which is rendered before every `li` inside a `ul`
 * `paragraphBreak`: text which appears after every `p` element
 * `lineBreak`: text which appears after text elements which create a new line (`br`, headings)
 * `addLineBreaks`: when explicitly `false`, effectively sets `paragraphBreak` and `lineBreak` to `null`
-* `NodeComponent`, `nodeComponentProps`, `RootComponent`, `rootComponentProps`, `TextComponent`, `textComponentProps`: see the heading **Customizing things even further** below.
+* `NodeComponent`, `nodeComponentProps`, `RootComponent`, `rootComponentProps`, `TextComponent`, `textComponentProps`: see [**Customizing things even further**](https://github.com/jsdf/react-native-htmlview#customizing-things-even-further) below.
 
 ### Example
 
@@ -184,35 +185,77 @@ In addition to supplying a custom `renderNode` function, you can customize what 
 
 ### Changelog
 
+<<<<<<< HEAD
+
+- 0.12.1
+  - use ViewPropTypes
+  - fix an issue with htmlparser2-without-node-native and inline-requires
+  - Thanks to @nikolaik and @douglasjunior
+- 0.12.0
+  - inherited styles are now applied in the correct order
+  - fixed an issue where the style array was unnecessarily complex and included multiple empty objects
+  - changes to the stylesheet will now trigger a re-render
+  - `textAlign` works correctly in most cases
+  - fixed an ordered list numbering bug
+  - added `onLinkLongPress` property
+  - default and custom styles now apply correctly to `<li>` prefix
+  - fixed `code` font for Android (monospace)
+  - Thanks to @JoeyBetlej, @isilher, @bky, @RobPando
+- 0.11.0
+  - `style` prop passed via `textComponentProps` is now respected even if no wrapping element is present
+  - underline style
+  - line break after `li`
+  - nested elements (`<b><i>...</i></b>`) work properly
+  - use `PureComponent`
+  - sundry refactoring
+  - Thanks to @michalraska, @tywhang, @isilher, @douglasjunior, @shashkovdanil
+- 0.10.0
+  - added props: `bullet`, `paragraphBreak`, `lineBreak`, `NodeComponent`, `nodeComponentProps`, `RootComponent`, `rootComponentProps`, `TextComponent`, `textComponentProps`
+- 0.9.0
+  - exposed `styles` prop
+  - exposed `defaultRenderer` in `renderNode` (@brandonreavis, @koenpunt)
+  - added `addLineBreaks` (@jmacedoit)
+- 0.7.0 - fixed for recent versions of react-native
+- 0.6.0 - onLinkPress fix (@damusnet), headers now only have one single line break (@crysfel)
+- 0.5.0 - react-native 0.25 compat (@damusnet)
+- # 0.4.0 - re-renders properly when html content changes
+
+* 0.13.0
+  - fixed `Failed prop type` error on react-native@0.56 [#228](https://github.com/jsdf/react-native-htmlview/pull/228)
+  - added support for `<s>` tag (strikethrough text) [#210](https://github.com/jsdf/react-native-htmlview/pull/210)
+  - fix to re-render when `textComponentProps` changes [#188](https://github.com/jsdf/react-native-htmlview/pull/188)
+  - fixed line breaks for `<li>` elements [#166](https://github.com/jsdf/react-native-htmlview/pull/166)
+  - Thanks to @mdimovska, @alphasp, @waldyrious, @macgregorthomson
 * 0.12.1
-  * use ViewPropTypes
-  * fix an issue with htmlparser2-without-node-native and inline-requires
-  * Thanks to @nikolaik and @douglasjunior
+  - use ViewPropTypes
+  - fix an issue with htmlparser2-without-node-native and inline-requires
+  - Thanks to @nikolaik and @douglasjunior
 * 0.12.0
-  * inherited styles are now applied in the correct order
-  * fixed an issue where the style array was unnecessarily complex and included multiple empty objects
-  * changes to the stylesheet will now trigger a re-render
-  * `textAlign` works correctly in most cases
-  * fixed an ordered list numbering bug
-  * added `onLinkLongPress` property
-  * default and custom styles now apply correctly to `<li>` prefix
-  * fixed `code` font for Android (monospace)
-  * Thanks to @JoeyBetlej, @isilher, @bky, @RobPando
+  - inherited styles are now applied in the correct order
+  - fixed an issue where the style array was unnecessarily complex and included multiple empty objects
+  - changes to the stylesheet will now trigger a re-render
+  - `textAlign` works correctly in most cases
+  - fixed an ordered list numbering bug
+  - added `onLinkLongPress` property
+  - default and custom styles now apply correctly to `<li>` prefix
+  - fixed `code` font for Android (monospace)
+  - Thanks to @JoeyBetlej, @isilher, @bky, @RobPando
 * 0.11.0
-  * `style` prop passed via `textComponentProps` is now respected even if no wrapping element is present
-  * underline style
-  * line break after `li`
-  * nested elements (`<b><i>...</i></b>`) work properly
-  * use `PureComponent`
-  * sundry refactoring
-  * Thanks to @michalraska, @tywhang, @isilher, @douglasjunior, @shashkovdanil
+  - `style` prop passed via `textComponentProps` is now respected even if no wrapping element is present
+  - underline style
+  - line break after `li`
+  - nested elements (`<b><i>...</i></b>`) work properly
+  - use `PureComponent`
+  - sundry refactoring
+  - Thanks to @michalraska, @tywhang, @isilher, @douglasjunior, @shashkovdanil
 * 0.10.0
-  * added props: `bullet`, `paragraphBreak`, `lineBreak`, `NodeComponent`, `nodeComponentProps`, `RootComponent`, `rootComponentProps`, `TextComponent`, `textComponentProps`
+  - added props: `bullet`, `paragraphBreak`, `lineBreak`, `NodeComponent`, `nodeComponentProps`, `RootComponent`, `rootComponentProps`, `TextComponent`, `textComponentProps`
 * 0.9.0
-  * exposed `styles` prop
-  * exposed `defaultRenderer` in `renderNode` (@brandonreavis, @koenpunt)
-  * added `addLineBreaks` (@jmacedoit)
+  - exposed `styles` prop
+  - exposed `defaultRenderer` in `renderNode` (@brandonreavis, @koenpunt)
+  - added `addLineBreaks` (@jmacedoit)
 * 0.7.0 - fixed for recent versions of react-native
 * 0.6.0 - onLinkPress fix (@damusnet), headers now only have one single line break (@crysfel)
 * 0.5.0 - react-native 0.25 compat (@damusnet)
 * 0.4.0 - re-renders properly when html content changes
+  > > > > > > > upstream/master
